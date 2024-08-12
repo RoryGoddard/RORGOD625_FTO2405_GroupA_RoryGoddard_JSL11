@@ -72,9 +72,7 @@ function displayBoards(boards) {
 function filterAndDisplayTasksByBoard(boardName) {
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
   const filteredTasks = tasks.filter(task => task.board = boardName);
-
   // Ensure the column titles are set outside of this function or correctly initialized before this function runs
-
   elements.columnDivs.forEach(column => {
     const status = column.getAttribute("data-status");
     // Reset column content while preserving the column title
@@ -84,7 +82,9 @@ function filterAndDisplayTasksByBoard(boardName) {
                         </div>`;
 
     const tasksContainer = document.createElement("div");
+    tasksContainer.classList.add("tasks-container")  // Added this line after multiple issues where I couldn't find the tasks container I was trying to reference and I was just getting null back
     column.appendChild(tasksContainer);
+    console.log(column.innerHTML)
 
     filteredTasks.filter(task => task.status = status).forEach(task => { 
       const taskElement = document.createElement("div");
@@ -124,12 +124,14 @@ function styleActiveBoard(boardName) {
 
 function addTaskToUI(task) {
   const column = document.querySelector(`.column-div[data-status="${task.status}"]`); // fix this template literal by replacing quotes with backticks
+  console.log('Column:', column);
   if (!column) {
     console.error(`Column not found for status: ${task.status}`);
     return;
   }
 
   let tasksContainer = column.querySelector('.tasks-container');
+  console.log('Tasks Container Before:', tasksContainer);
   if (!tasksContainer) {
     console.warn(`Tasks container not found for status: ${task.status}, creating one.`);
     tasksContainer = document.createElement('div');
@@ -137,12 +139,15 @@ function addTaskToUI(task) {
     column.appendChild(tasksContainer);
   }
 
+  console.log('Tasks Container After:', tasksContainer);
+
   const taskElement = document.createElement('div');
   taskElement.className = 'task-div';
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute('data-task-id', task.id);
   
   tasksContainer.appendChild(taskElement); 
+  console.log('Task added to UI:', taskElement);
 }
 
 
@@ -202,7 +207,7 @@ function addTask(event) {
       "title": document.getElementById("title-input").value,
       "description": document.getElementById("desc-input").value,
       "status": document.getElementById("select-status").value,
-      "board": document.getElementById("header-board-name").textContent
+      "board": headerBoardName.textContent
     };
     console.log(task)
     const newTask = createNewTask(task);
