@@ -219,7 +219,8 @@ function toggleSidebar(show) {
 }
 
 function toggleTheme() {
- 
+  document.body.classList.toggle('light-theme');
+  localStorage.isLightTheme = document.body.classList.contains("light-theme")
 }
 
 
@@ -266,7 +267,7 @@ function init() {
   setupEventListeners();
   const showSidebar = localStorage.getItem('showSideBar') === 'true';
   toggleSidebar(showSidebar);
-  const isLightTheme = localStorage.getItem('light-theme') === 'enabled';
+  const isLightTheme = localStorage.getItem('isLightTheme') === 'true'; // I changed the logic here to something that made more sense to me
   document.body.classList.toggle('light-theme', isLightTheme);
   fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
 }
