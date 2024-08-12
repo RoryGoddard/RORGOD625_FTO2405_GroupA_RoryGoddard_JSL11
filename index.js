@@ -26,7 +26,7 @@ const elements = {
   themeSwitch: document.getElementById("switch"),
   createNewTaskBtn: document.getElementById("add-new-task-btn"),
   modalWindow: document.getElementById("new-task-modal-window"),
-  editTaskModal: document.getElementById("edit-board-btn")
+  editTaskModal: document.querySelector(".edit-task-modal-window")
 }
 
 let activeBoard = ""
@@ -240,6 +240,27 @@ function toggleTheme() {
 
 function openEditTaskModal(task) {
   // Set task details in modal inputs
+  console.log(task)
+
+  let taskTitleEl = document.getElementById("edit-task-title-input")
+  let taskDescriptionEl = document.getElementById("edit-task-desc-input")
+  let taskStatusEl = document.getElementById("edit-select-status")
+
+  taskTitleEl.value = task.title
+  taskDescriptionEl.value = task.description
+  taskStatusEl.value = task.status
+
+  elements.editTaskModal.style.display = "block"
+
+  document.getElementById("cancel-edit-btn").addEventListener("click", () => elements.editTaskModal.style.display = "none")
+
+  document.getElementById("delete-task-btn").addEventListener("click", () => {
+    deleteTask(task.id)
+    refreshTasksUI()
+    elements.editTaskModal.style.display = "none"
+  })
+
+  // document.getElementById("save-task-changes-btn").addEventListener("",)
 
   // Get button elements from the task modal
 
