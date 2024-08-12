@@ -1,5 +1,5 @@
-import { getTasks, saveTasks, createNewTask, patchTask, putTask, deleteTask } from "utils/taskFunction.js"
-import { initialData } from "initalData.js"
+import { getTasks, saveTasks, createNewTask, patchTask, putTask, deleteTask } from "./utils/taskFunctions.js"
+import { initialData } from "./initialData.js"
 
 
 /*************************************************************************************************************************************************
@@ -18,7 +18,15 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
-
+  headerBoardName: document.getElementById("header-board-name"),
+  columnDivs: document.querySelectorAll(".column-div"),
+  filterDiv: document.getElementById("filterDiv"),
+  hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
+  showSideBarBtn: document.getElementById("show-side-bar-btn"),
+  themeSwitch: document.getElementById("switch"),
+  createNewTaskBtn: document.getElementById("create-task-btn"),
+  modalWindow: document.getElementById("new-task-modal-window"),
+  editTaskModal: document.getElementById("edit-board-btn")
 }
 
 let activeBoard = ""
@@ -150,7 +158,10 @@ function setupEventListeners() {
     toggleModal(false);
     elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
   });
-
+  console.log("about to intialise filter div event listener")
+  console.log(filterDiv)
+  console.log(filterDiv.textContent)
+  console.log(elements)
   // Clicking outside the modal to close it
   elements.filterDiv.addEventListener('click', () => {
     toggleModal(false);
