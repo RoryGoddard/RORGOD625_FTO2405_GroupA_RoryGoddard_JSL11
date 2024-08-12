@@ -219,10 +219,12 @@ function toggleSidebar(show) {
 }
 
 function toggleTheme() {
+  const logo = document.getElementById("logo");
+  console.log(logo)
   document.body.classList.toggle('light-theme');
-  localStorage.isLightTheme = document.body.classList.contains("light-theme")
+  localStorage.setItem("isLightTheme", document.body.classList.contains("light-theme"))
+  localStorage.getItem("isLightTheme") ? logo.setAttribute("src", "./assets/logo-light.svg") : logo.setAttribute("src", "./assets/logo-dark.svg")
 }
-
 
 
 function openEditTaskModal(task) {
