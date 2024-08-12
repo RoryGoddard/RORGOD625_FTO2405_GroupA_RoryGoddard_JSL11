@@ -198,9 +198,13 @@ function addTask(event) {
   event.preventDefault(); 
   const taskTitle = document.getElementById("title-input").value
   //Assign user input to the task object
-    const task = {
-      taskTitle
+    const task = {       
+      "title": document.getElementById("title-input").value,
+      "description": document.getElementById("desc-input").value,
+      "status": document.getElementById("select-status").value,
+      "board": document.getElementById("header-board-name").textContent
     };
+    console.log(task)
     const newTask = createNewTask(task);
     if (newTask) {
       addTaskToUI(newTask);
@@ -229,7 +233,6 @@ function toggleTheme() {
 
 function openEditTaskModal(task) {
   // Set task details in modal inputs
-  
 
   // Get button elements from the task modal
 
