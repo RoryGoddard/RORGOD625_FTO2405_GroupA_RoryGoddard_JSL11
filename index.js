@@ -70,8 +70,10 @@ function displayBoards(boards) {
 // Filters tasks corresponding to the board name and displays them on the DOM.
 // TASK: Fix Bugs
 function filterAndDisplayTasksByBoard(boardName) {
+  console.log(boardName)
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
-  const filteredTasks = tasks.filter(task => task.board = boardName);
+  const filteredTasks = tasks.filter(task => task.board === boardName);
+  console.log(filteredTasks)
   // Ensure the column titles are set outside of this function or correctly initialized before this function runs
   elements.columnDivs.forEach(column => {
     const status = column.getAttribute("data-status");
@@ -207,7 +209,7 @@ function addTask(event) {
       "title": document.getElementById("title-input").value,
       "description": document.getElementById("desc-input").value,
       "status": document.getElementById("select-status").value,
-      "board": headerBoardName.textContent
+      "board": elements.headerBoardName.textContent
     };
     console.log(task)
     const newTask = createNewTask(task);
