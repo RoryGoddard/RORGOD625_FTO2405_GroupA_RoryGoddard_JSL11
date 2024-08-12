@@ -196,10 +196,10 @@ function toggleModal(show, modal = elements.modalWindow) {
 
 function addTask(event) {
   event.preventDefault(); 
-
+  const taskTitle = document.getElementById("title-input").value
   //Assign user input to the task object
     const task = {
-      
+      taskTitle
     };
     const newTask = createNewTask(task);
     if (newTask) {
@@ -213,7 +213,8 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
- 
+  document.getElementById("side-bar-div").style.display = show ? 'block' : 'none';
+  elements.showSideBarBtn.style.display = show ? 'none' : 'block';
 }
 
 function toggleTheme() {
