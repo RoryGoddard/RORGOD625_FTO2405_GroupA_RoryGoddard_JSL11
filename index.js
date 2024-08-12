@@ -24,7 +24,7 @@ const elements = {
   hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
   themeSwitch: document.getElementById("switch"),
-  createNewTaskBtn: document.getElementById("create-task-btn"),
+  createNewTaskBtn: document.getElementById("add-new-task-btn"),
   modalWindow: document.getElementById("new-task-modal-window"),
   editTaskModal: document.getElementById("edit-board-btn")
 }
