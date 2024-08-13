@@ -229,7 +229,7 @@ function toggleTheme() {
   const logo = document.getElementById("logo");
   document.body.classList.toggle('light-theme');
   localStorage.setItem("isLightTheme", document.body.classList.contains("light-theme"));
-  localStorage.getItem("isLightTheme") ? logo.setAttribute("src", "./assets/logo-light.svg") : logo.setAttribute("src", "./assets/logo-dark.svg");
+  localStorage.getItem("isLightTheme") === "true" ? logo.setAttribute("src", "./assets/logo-light.svg") : logo.setAttribute("src", "./assets/logo-dark.svg");
 }
 
 
