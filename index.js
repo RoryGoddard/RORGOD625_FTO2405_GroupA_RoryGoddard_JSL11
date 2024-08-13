@@ -291,5 +291,6 @@ function init() {
   toggleSidebar(showSidebar);
   const isLightTheme = localStorage.getItem('isLightTheme') === 'true'; // I changed the logic here to something that made more sense to me
   document.body.classList.toggle('light-theme', isLightTheme);
+  localStorage.getItem("isLightTheme") === "true" ? logo.setAttribute("src", "./assets/logo-light.svg") : logo.setAttribute("src", "./assets/logo-dark.svg");
   fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
 }
