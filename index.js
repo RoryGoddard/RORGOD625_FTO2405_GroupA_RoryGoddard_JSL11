@@ -31,6 +31,7 @@ const elements = {
 
 let activeBoard = "";
 
+
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
 function fetchAndDisplayBoardsAndTasks() {
@@ -107,7 +108,6 @@ function refreshTasksUI() {
 }
 
 // Styles the active board by adding an active class
-// TASK: Fix Bugs
 function styleActiveBoard(boardName) {
   document.querySelectorAll('.board-btn').forEach(btn => { 
     
@@ -122,7 +122,7 @@ function styleActiveBoard(boardName) {
 
 
 function addTaskToUI(task) {
-  const column = document.querySelector(`.column-div[data-status="${task.status}"]`); // fix this template literal by replacing quotes with backticks
+  const column = document.querySelector(`.column-div[data-status="${task.status}"]`); // Fixed this template literal by replacing quotes with backticks
   console.log('Column:', column);
   if (!column) {
     console.error(`Column not found for status: ${task.status}`);
@@ -189,7 +189,6 @@ function setupEventListeners() {
 }
 
 // Toggles tasks modal
-// Task: Fix bugs
 function toggleModal(show, modal = elements.modalWindow) {
   modal.style.display = show ? 'block' : 'none'; 
 }
@@ -276,9 +275,6 @@ function saveTaskChanges(taskId) {
 
   // Update task using a hlper functoin
  putTask(taskId, updatedTask);
-
-  // Close the modal and refresh the UI to reflect the changes
-
   refreshTasksUI();
 }
 
